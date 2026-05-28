@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Starwell Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0a0d1f;
+      --navy-mid: #0d1133;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --blue: #4a7fcb;
+      --blue-light: #7aaee8;
+      --purple: #7b5ea7;
+      --purple-light: #a87fd4;
+      --white: #f0eee8;
+      --white-dim: rgba(240,238,232,0.7);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--navy);
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 10% 15%, rgba(201,168,76,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 40% 10%, rgba(74,127,203,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 70%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 25%, rgba(74,127,203,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 80% 55%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 80%, rgba(201,168,76,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 15% 85%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 60% 90%, rgba(74,127,203,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 60%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 50% 30%, rgba(255,255,255,0.5) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(10,13,31,0.95), transparent);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+
+    nav .nav-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-decoration: none;
+    }
+
+    nav ul { list-style: none; display: flex; gap: 2.5rem; }
+
+    nav ul li a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--white-dim);
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover { color: var(--gold-light); }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      z-index: 1;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 200px;
+      background: linear-gradient(to bottom, transparent, var(--navy));
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse, rgba(74,127,203,0.15) 0%, rgba(201,168,76,0.05) 50%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      width: min(280px, 65vw);
+      height: auto;
+      animation: fadeUp 1.2s ease forwards;
+      filter: drop-shadow(0 0 30px rgba(74,127,203,0.4));
+    }
+
+    .hero-tagline {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+      color: var(--gold);
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+      animation: fadeUp 1.2s ease 0.3s both;
+    }
+
+    .hero-statement {
+      max-width: 580px;
+      margin: 2rem auto 0;
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      font-weight: 300;
+      color: var(--white-dim);
+      line-height: 1.9;
+      animation: fadeUp 1.2s ease 0.6s both;
+    }
+
+    .divider {
+      width: 120px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--blue-light), transparent);
+      margin: 2.5rem auto;
+      animation: fadeUp 1.2s ease 0.8s both;
+    }
+
+    .games {
+      position: relative;
+      z-index: 1;
+      padding: 4rem 3rem 6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .game-card {
+      position: relative;
+      border: 1px solid rgba(74,127,203,0.2);
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
+      background: linear-gradient(135deg, rgba(13,17,51,0.8), rgba(10,13,31,0.9));
+      text-decoration: none;
+      color: var(--white);
+      transition: all 0.4s ease;
+      overflow: hidden;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .game-card:nth-child(1) { animation-delay: 0.1s; }
+    .game-card:nth-child(2) { animation-delay: 0.25s; }
+    .game-card:nth-child(3) { animation-delay: 0.4s; }
+
+    .game-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(74,127,203,0.05), rgba(201,168,76,0.03));
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .game-card:hover {
+      border-color: rgba(74,127,203,0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(74,127,203,0.1);
+    }
+
+    .game-card:hover::before { opacity: 1; }
+
+    .game-card.coming-soon { opacity: 0.6; cursor: default; }
+    .game-card.coming-soon:hover { transform: none; box-shadow: none; border-color: rgba(74,127,203,0.2); }
+
+    .game-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+
+    .game-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: var(--blue-light);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .game-status {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .game-desc {
+      font-size: 0.875rem;
+      color: var(--white-dim);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .game-arrow {
+      position: absolute;
+      bottom: 1.5rem; right: 1.5rem;
+      color: var(--blue-light);
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: all 0.3s;
+      font-size: 1.2rem;
+    }
+
+    .game-card:hover .game-arrow { opacity: 1; transform: translateX(0); }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      border: 1px solid var(--blue);
+      border-radius: 2px;
+      padding: 0.2rem 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .connect {
+      position: relative;
+      z-index: 1;
+      padding: 4rem 3rem 6rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .connect-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .connect-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.8rem;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 3px;
+      background: rgba(13,17,51,0.6);
+      color: var(--white-dim);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-family: 'Raleway', sans-serif;
+      letter-spacing: 0.1em;
+      transition: all 0.3s;
+    }
+
+    .connect-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+      background: rgba(201,168,76,0.08);
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(201,168,76,0.1);
+      font-size: 0.75rem;
+      color: rgba(240,238,232,0.3);
+      letter-spacing: 0.15em;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-brand">Starwell Creative</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="designs.html">Designs</a></li>
+      <li><a href="mailto:starwellcreative@outlook.com">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <img src="starwell_digital.png" alt="Starwell Digital" class="hero-logo" />
+    <p class="hero-tagline">Games &nbsp;·&nbsp; Interactive &nbsp;·&nbsp; Worlds</p>
+    <div class="divider"></div>
+    <p class="hero-statement">
+      Where worlds are built. Game development, interactive experiences, and the stories that live inside them — crafted with intention from the ground up.
+    </p>
+  </section>
+
+  <section class="games" id="games">
+    <p class="section-title">Our Games</p>
+    <div class="games-grid">
+
+      <a href="#" class="game-card">
+        <span class="game-icon">🌌</span>
+        <div class="game-title">Stillfall</div>
+        <div class="game-status">In Development · Roblox</div>
+        <p class="game-desc">A world in motion. Stillfall is an evolving experience built with care, released in chapters, and shaped by the community around it.</p>
+        <span class="game-arrow">→</span>
+      </a>
+
+      <a href="#" class="game-card">
+        <span class="game-icon">⚡</span>
+        <div class="game-title">Nimbus Tag</div>
+        <div class="game-status">In Development · Roblox</div>
+        <p class="game-desc">Fast, chaotic, and full of personality. Nimbus Tag brings storm-cloud energy to a game built for pure fun.</p>
+        <span class="game-arrow">→</span>
+      </a>
+
+      <div class="game-card coming-soon">
+        <span class="game-icon">🗡️</span>
+        <div class="game-title">GlyphGuard</div>
+        <div class="game-status">Coming Soon</div>
+        <p class="game-desc">A strategic tower defense experience where every unit tells a story. GlyphGuard is being built from the ground up with deep mechanics and rich lore.</p>
+        <span class="badge">In Planning</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="connect" id="connect">
+    <p class="section-title">Join the Community</p>
+    <div class="connect-grid">
+      <a href="#" class="connect-btn">💬 Discord — Starwell Creative</a>
+      <a href="#" class="connect-btn">🎮 Discord — Starwell Digital</a>
+      <a href="mailto:starwellcreative@outlook.com" class="connect-btn">✉ starwellcreative@outlook.com</a>
+      <a href="index.html" class="connect-btn">← Back to Starwell Creative</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Starwell Creative &nbsp;·&nbsp; All rights reserved
+  </footer>
+
+</body>
+</html>
