@@ -311,6 +311,61 @@
       from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    @media (max-width: 720px) {
+      nav {
+        padding: 0.9rem 1rem;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      nav .nav-brand {
+        max-width: 8.5rem;
+        font-size: 0.82rem;
+        line-height: 1.35;
+        letter-spacing: 0.08em;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 0.55rem 0.9rem;
+      }
+
+      nav ul li a {
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+      }
+
+      .hero {
+        padding-inline: 1.25rem;
+      }
+
+      .hero-glow {
+        width: min(600px, 95vw);
+        height: min(600px, 95vw);
+      }
+
+      .hero-tagline {
+        max-width: 20rem;
+        line-height: 1.8;
+        letter-spacing: 0.18em;
+      }
+
+      .games,
+      .connect {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+
+      .connect-btn {
+        width: 100%;
+        justify-content: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        letter-spacing: 0.04em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -368,8 +423,8 @@
   <section class="connect" id="connect">
     <p class="section-title">Join the Community</p>
     <div class="connect-grid">
-      <a href="#" class="connect-btn">💬 Discord — Starwell Creative</a>
-      <a href="#" class="connect-btn">🎮 Discord — Starwell Digital</a>
+      <a href="https://discord.gg/e2nX5m8gxf" class="connect-btn" target="_blank" rel="noopener">💬 Discord — Starwell Designs</a>
+      <a href="https://discord.gg/atSj9pUuQV" class="connect-btn" target="_blank" rel="noopener">🎮 Discord — Starwell Digital</a>
       <a href="mailto:starwellcreative@outlook.com" class="connect-btn">✉ starwellcreative@outlook.com</a>
       <a href="index.html" class="connect-btn">← Back to Starwell Creative</a>
     </div>
